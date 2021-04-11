@@ -12,7 +12,5 @@ public class StudentRegistrationTest extends TestBase {
         studentRegistrationForm.openPage();
         studentRegistrationForm.fillForm();
         studentRegistrationForm.checkData();
-
     }
-
 }

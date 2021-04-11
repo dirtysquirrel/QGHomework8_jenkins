@@ -14,7 +14,6 @@ import static io.qameta.allure.Allure.*;
 public class StudentRegistrationForm {
     Faker faker = new Faker();
 
-
     String name = faker.name().firstName(),
             lastName = faker.name().lastName(),
             mail = faker.internet().emailAddress(),
@@ -41,13 +40,9 @@ public class StudentRegistrationForm {
         step("заполняем форму регистрации", () -> {
             step("заполняем общие данные", () -> {
                 $("#firstName").setValue(name);
-
                 $("#lastName").setValue(lastName);
-
                 $("#userEmail").setValue(mail);
-
                 $("label[for='gender-radio-2']").click();
-
                 $("#userNumber").setValue(phoneNumber);
             });
 
@@ -72,15 +67,16 @@ public class StudentRegistrationForm {
                 File file = new File(picture);
                 $("#uploadPicture").uploadFile(file);
             });
+
             step("вводим адрес", () -> {
                 $("#currentAddress").setValue(address);
-
                 $("#state").scrollTo().click();
                 $(byText(state)).click();
-
                 $(byText("Select City")).scrollTo().click();
                 $(byText(city)).click();
+            });
 
+            step("сохраняем данные", () -> {
                 $("#submit").click();
             });
         });
